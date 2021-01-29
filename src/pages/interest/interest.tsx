@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 // import { View, Text, Checkbox, Label, Input, Button} from '@tarojs/components'
-import { View, Text, Input, Button, Label, Checkbox, CheckboxGroup} from '@tarojs/components'
+import { View, Input, Button, Label, Checkbox, CheckboxGroup} from '@tarojs/components'
 import './interest.scss'
 import Taro from '@tarojs/taro'
+import { AtButton } from 'taro-ui'
+import { AtTag } from 'taro-ui'
+// import "../../../node_modules/taro-ui/dist/style/components/tag.scss"
 
 export default class Index extends Component {
   componentWillMount () { }
@@ -42,6 +45,13 @@ export default class Index extends Component {
 
   gotoIndex=()=>{
     Taro.switchTab({url:'/pages/index/index'})
+  }
+
+  clickTag=(e)=> {
+    console.log(e);
+    this.setState({
+      
+    })
   }
 
   checkboxChange = (event) => {
@@ -85,6 +95,23 @@ export default class Index extends Component {
           <Button type="primary" size="mini" onClick={this.gotoIndex}>开启趣奇世界</Button>
           <br/>
           <Button type="primary" size="mini" plain= {true} >跳过，我先浏览看看</Button>
+          <AtButton type='primary'>按钮文案</AtButton>
+
+          <AtTag 
+            // active={true}
+            name="标签"
+            onClick={this.clickTag.bind(this)}  
+            >标签</AtTag>
+          <AtTag type='primary' circle active={true}>标签</AtTag>
+          <AtTag size='small' active={true}>标签</AtTag>
+          <AtTag 
+            name='tag-1' 
+            type='primary' 
+            circle 
+            // onClick={this.onClick.bind(this)}  
+          >
+            tag-1
+          </AtTag>
       </View>
     )
   }
